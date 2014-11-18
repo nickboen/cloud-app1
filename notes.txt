@@ -1,0 +1,59 @@
+bootstrap.properties
+
+1.  spring.application.name: appname  -->  
+	
+	The app name is the base file name that it will look for on the config server
+	
+2.  platform.config.uri: http://localhost:${config.port:8888 -->
+
+	This is where is will go for the config server calls.  Props like config.port same be overridden 
+	with a startup arg --config.port=1234
+	
+3.  When you start the app, properties will be loaded in the following order (run the app with --debug 
+	to see what files are loaded in the log):
+	
+	bootstrap
+	
+		file:./config/bootstrap.yaml
+		file:./config/bootstrap.properties
+		file:./config/bootstrap.yml
+		file:./bootstrap.yaml
+		file:./bootstrap.properties
+		file:./bootstrap.yml
+		classpath:/config/bootstrap.yaml
+		classpath:/config/bootstrap.properties
+		classpath:/config/bootstrap.yml
+		classpath:/bootstrap.yaml
+		classpath:/bootstrap.properties
+		classpath:/bootstrap.yml
+		
+	
+	application
+	
+		file:./config/application.yaml
+		file:./config/application.properties
+		file:./config/application.yml
+		file:./application.yaml
+		file:./application.properties
+		file:./application.yml
+		classpath:/config/application.yaml
+		classpath:/config/application.properties
+		classpath:/config/application.yml
+		classpath:/application.yaml
+		classpath:/application.properties
+		classpath:/application.yml
+		
+		
+4.  What it will look for on the config server:
+
+If so specify a profile like -Dspring.profiles.default=development it will call this rest url --> /nick-cloud-hello/development/master
+
+if not, it will call --> /nick-cloud-hello/master
+
+Need to check if the git label master can be replaces with a custom label
+		
+		
+		
+		
+		
+		
